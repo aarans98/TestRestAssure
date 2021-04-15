@@ -17,7 +17,7 @@ import java.util.logging.Logger;
 @RestController
 @RequestMapping("/student")
 public class StudentController {
-
+s
     @Autowired
     private StudentService studentService;
 
