@@ -17,5 +17,7 @@ public interface StudentRepository extends CrudRepository<Student, Integer> {
             "where id = ?1", nativeQuery = true)
     Student queryById(Integer id);
 
+    List<Student> findAll();
+
 
 }

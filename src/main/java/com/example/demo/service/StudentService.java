@@ -6,6 +6,7 @@ import com.example.demo.view.StudentView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import sun.rmi.runtime.Log;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -42,5 +43,16 @@ public class StudentService {
             Logger.getLogger(StudentService.class.getName()).log(Level.SEVERE, null, ex);
         }
         return student1;
+    }
+
+    @Transactional
+    public List<Student> getAll() throws Exception {
+        List<Student> studentList = new ArrayList<>();
+        try {
+            studentList = studentRepository.findAll();
+        } catch (Exception ex) {
+            Logger.getLogger(StudentService.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return studentList;
     }
 }

@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
+import sun.rmi.runtime.Log;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,6 +44,18 @@ public class StudentController {
             Logger.getLogger(StudentController.class.getName()).log(Level.SEVERE, null, ex);
         }
         return student1;
+    }
+
+    @GetMapping(value = "/getAll", produces = MediaType.APPLICATION_JSON_VALUE)
+    @ResponseStatus(HttpStatus.OK)
+    public List<Student> getAll() {
+        List<Student> studentList = new ArrayList<>();
+        try {
+            studentList = studentService.getAll();
+        } catch (Exception ex) {
+            Logger.getLogger(StudentController.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return studentList;
     }
 
 }
